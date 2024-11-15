@@ -4,7 +4,7 @@ async function getRandomTime(min, max) {
 }
 async function generateRandomUserName() {
     const lastNames = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Vũ", "Võ", "Đặng"];
-    const middleNames = ["Việt", "Thị", "Văn", "Hồng", "Minh", "Quang", "Thanh", "Anh"];
+    const middleNames = ["ViệtT", "ThịT", "VănT", "HồngT", "MinhT", "QuangT", "ThanhT", "AnhT"];
     const firstNames = ["Tùng", "Hùng", "Lan", "Anh", "Bình", "Dũng", "Sơn", "Phương"];
 
     function getRandomElement(arr) {
@@ -32,36 +32,7 @@ async function generateRandomPhone() {
     return `${getRandomElement(prefixes)}${generateRandomDigits(7)}`;
 }
 
-async function generateCardCode() {
-    const letters = "DHEMUYFTWANRKPUXC";
-    const numbers = "23479";
-
-    function getRandomElement(str) {
-        return str[Math.floor(Math.random() * str.length)];
-    }
-
-    const numCount = Math.floor(Math.random() * 4) + 1;
-    const letterCount = 7 - numCount;
-
-    let cardCodeArray = [];
-
-    for (let i = 0; i < letterCount; i++) {
-        cardCodeArray.push(getRandomElement(letters));
-    }
-
-    for (let i = 0; i < numCount; i++) {
-        cardCodeArray.push(getRandomElement(numbers));
-    }
-
-    for (let i = cardCodeArray.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [cardCodeArray[i], cardCodeArray[j]] = [cardCodeArray[j], cardCodeArray[i]];
-    }
-
-    return cardCodeArray.join('');
-}
 module.exports = {
-    generateCardCode,
     generateRandomPhone,
     getRandomTime,
     generateRandomUserName
